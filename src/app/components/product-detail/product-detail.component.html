@@ -1,0 +1,28 @@
+<div class="container" *ngIf="product">
+  <div class="image">
+    <img src="../../../assets/images/camera.png" alt="" srcset="">
+  </div>
+  <div class="infos">
+    <p>{{ product.manufacturer }} {{ product.name }}</p>
+    <p>{{ product.summary }}</p>
+  </div>
+  <div class="box-price">
+    <p>{{ product.price.value | currency }}</p>
+
+    <h3 *ngIf="product.stock.stockLevelStatus === 'outOfStock'">
+      Sold out!
+    </h3>
+    <button type="button" class="button"
+      *ngIf="product.stock.stockLevelStatus === 'inStock' || product.stock.stockLevelStatus === 'intStock'">
+      Add to Cart
+    </button>
+  </div>
+  <button (click)="show = !show" class="accordion">
+    <span>Product info</span>
+    <i class="arrow right" *ngIf="!show"></i>
+    <i class="arrow down" *ngIf="show"></i>
+  </button>
+  <div class="panel" *ngIf="show">
+    <div [innerHTML]="product.description"></div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+.products {
+  columns: 2;
+  text-align: center;
+  list-style: none;
+  margin: .6rem 0;
+
+  .product-card {
+    position: relative;
+    background-color: #F2F2F2;
+    min-height: 12rem;
+    border-radius: 5px;
+    cursor: pointer;
+
+    .to-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 12vh;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: #CCC;
+      opacity: 0;
+      -webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
+      transition: all 1s;
+    }
+
+    .show {
+      opacity: .9;
+    
+      .button {
+        opacity: 1!important;
+      }
+    }
+
+    .img-list{
+      width: 8rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .img-list{
+    width: 18rem!important;
+  }
+
+  .details-list {
+    h5 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 2rem;
+    }
+  }
+}

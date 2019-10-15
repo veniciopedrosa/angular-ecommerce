@@ -1,0 +1,22 @@
+<ul class="products" *ngIf="products">
+  <li class="product-card"
+    *ngFor="let prod of products; let i = index"
+    (click)="selectProduct(prod.code)"
+    (mouseenter)="mouseHover(i)"
+    (mouseleave)="mouseHover(i)">
+      <img class="img-list" src="../../../assets/images/camera.png" alt="Segundo Slide">
+      <div class="details-list">
+        <h5>{{ prod.manufacturer }} {{ prod.name }}</h5>
+        <p>{{ prod.price.value | currency }}</p>
+      </div>
+      <div class="to-card" [ngClass]="{'show': show && index === i}">
+        <h3 *ngIf="prod.stock.stockLevelStatus === 'outOfStock'">
+          Sold out!
+        </h3>
+        <button type="button" class="button"
+          *ngIf="prod.stock.stockLevelStatus === 'inStock' || prod.stock.stockLevelStatus === 'intStock'">
+          Add to Cart
+        </button>
+      </div>
+  </li>
+</ul>
