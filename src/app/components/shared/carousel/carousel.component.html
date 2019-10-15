@@ -1,0 +1,26 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" *ngIf="products">
+  <div class="carousel-inner">
+    <div class="carousel-item" *ngFor="let prod of products; let i = index" [ngClass]="{'active': i === 0}">
+      <img class="d-block w-100 img" src="../../../assets/images/camera.png" alt="Segundo Slide">
+      <div class="details">
+        <h5>{{ prod.manufacturer }} {{ prod.name }}</h5>
+        <p>{{ prod.summary }}</p>
+        <h3 *ngIf="prod.stock.stockLevelStatus === 'outOfStock'">
+          Sold out!
+        </h3>
+        <button type="button" class="button"
+          *ngIf="prod.stock.stockLevelStatus === 'inStock' || prod.stock.stockLevelStatus === 'intStock'">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Próximo</span>
+  </a>
+</div>
